@@ -1,12 +1,3 @@
-VERSION 1.0 CLASS
-BEGIN
-  MultiUse = -1  'True
-END
-Attribute VB_Name = "Sheet1"
-Attribute VB_GlobalNameSpace = False
-Attribute VB_Creatable = False
-Attribute VB_PredeclaredId = True
-Attribute VB_Exposed = True
 Sub stockmarket():
 
     Dim totalvolume As Double
@@ -40,7 +31,7 @@ Sub stockmarket():
             If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
                 totalvolume = totalvolume + ws.Cells(i, 7).Value
                 If ws.Cells(startvalue, 3) = 0 Then
-                    For firstnonzero = startvalue To i
+                    For firstnonzero = startvalue To i + 1
                         If ws.Cells(firstnonzero, 3).Value <> 0 Then
                             startvalue = firstnonzero
                             Exit For
@@ -57,6 +48,7 @@ Sub stockmarket():
                 totalvolume = 0
                 RCount = RCount + 1
                 change = 0
+                startvalue = i + 1
                 
             Else
                 totalvolume = totalvolume + ws.Cells(i, 7).Value
